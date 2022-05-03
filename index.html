@@ -5,51 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
-    <title>Document</title>
+    <title>Awesome Books with ES6</title>
 </head>
 <body>
-
-    <!-- Header for project -->
-
     <header class="header1">
-        <h1 class="titlebook">Awesome Book</h1>
+        <h1 class="titlebook">Awesome books</h1>
         <nav class="links">
             <a href="#" class="listbook">List</a>
             <a href="#" class="addbook">Add Book</a>
             <a href="#" class="contactbook">Contact</a>
         </nav>
     </header>
-
-    <!-- Book List -->
-
+       
     <div class="booklist">
         <div class="listtitle">
             <h4>Title</h4>
             <h4>Author</h4>
             <h4>Action</h4>
         </div>
-        <div class="booknamelist">
-            <ul class="bookname">
-                <li>Rich dad</li>
-                <li>Kiyosaki</li>
-                <li><button type="button" class="removebtn">Remove</button></li>
-            </ul>
+        <div id="displaybook" class="displaybook1">
         </div>
-       
-    </div>
+        </div>
+        <div class="addnewbook">
+            <h1 class="addtitle">Add Book</h1>
+            <h3>Title</h3>
+            <input type="text" name="title1" id="title" placeholder="Title"/>
+            <h3>Author</h3>
+            <input type="text" name="author1" id="author" placeholder="Author"/>
+            <button type="button" id="add">Add</button>
+        </div>
 
-    <!-- Add book section -->
 
-    <section class="addnewbook">
-        <h1 class="addtitle">Add Book</h1>
-        <label>Title</label>
-        <input type="text">
-        <label>Author</label>
-        <input type="text">
-        <button type="button" class="addbtn">Add Book</button>
-    </section>
 
-    <!-- Contact info section -->
+
+
+            <!-- Contact info section -->
 
     <section class="contactinfo">
         <h1>Contact Information</h1>
@@ -70,7 +60,7 @@
         CopyRigth 2022
     </footer>
 
-
-    <script type="module" src="index.js"></script>
+    <script src="index.js"></script>
+    
 </body>
 </html>
