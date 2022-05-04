@@ -8,6 +8,13 @@
   background-color: rgb(44, 43, 43);
 }
 
+.current-date{
+    font-size: large;
+    height: 20px;
+    position: absolute;
+    right: 12%;
+}
+
 .titlebook {
   color: #fff;
   margin-left: 10px;
@@ -75,7 +82,7 @@ h4 {
 }
 
 .addnewbook {
-  display: flex;
+  display: none;
   flex-direction: column;
   width: 50%;
   margin-left: 25%;
@@ -106,11 +113,12 @@ input {
 }
 
 .contactinfo {
-  width: 50%;
-  margin-left: 25%;
-  border: 1px solid #000;
-  margin-top: 40px;
-  padding-left: 20px;
+    display: none;
+    width: 50%;
+    margin-left: 25%;
+    border: 1px solid #000;
+    margin-top: 40px;
+    padding-left: 20px;
 }
 
 .ptext {

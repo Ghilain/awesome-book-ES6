@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
     <link rel="stylesheet" href="index.css">
     <title>Awesome Books with ES6</title>
 </head>
@@ -11,13 +12,18 @@
     <header class="header1">
         <h1 class="titlebook">Awesome books</h1>
         <nav class="links">
-            <a href="#" class="listbook">List</a>
-            <a href="#" class="addbook">Add Book</a>
-            <a href="#" class="contactbook">Contact</a>
+            <a href="#" id="show-list-button" class="listbook">List</a>
+            <a href="#" id="addnewlink" class="addbook">Add Book</a>
+            <a href="#" id="contact-info-button" class="contactbook">Contact</a>
         </nav>
     </header>
-       
-    <div class="booklist">
+    <div class="current-date">
+        <P id="current-date"></P>
+    </div>
+
+       <!-- Book List -->
+
+    <div id="listbooksec" class="booklist">
         <div class="listtitle">
             <h4>Title</h4>
             <h4>Author</h4>
@@ -25,28 +31,29 @@
         </div>
         <div id="displaybook" class="displaybook1">
         </div>
-        </div>
-        <div class="addnewbook">
-            <h1 class="addtitle">Add Book</h1>
-            <h3>Title</h3>
-            <input type="text" name="title1" id="title" placeholder="Title"/>
-            <h3>Author</h3>
-            <input type="text" name="author1" id="author" placeholder="Author"/>
-            <button type="button" id="add">Add</button>
-        </div>
+    </div>
+
+    <!-- Add book section -->
+
+    <div id="newbooksec" class="addnewbook">
+        <h1 class="addtitle">Add Book</h1>
+        <h3>Title</h3>
+        <input type="text" name="title1" id="title" placeholder="Title"/>
+        <h3>Author</h3>
+        <input type="text" name="author1" id="author" placeholder="Author"/>
+        <button type="button" id="add">Add</button>
+    </div>
 
             <!-- Contact info section -->
 
-    <section class="contactinfo">
+    <section id="contact-info" class="contactinfo">
         <h2>Contact Information</h2>
         <ul>
-            <li class="ptext">Do have any questions or you just want to say "Hello"?
-            </li>
+            <li class="ptext">Do have any questions or you just want to say "Hello"?</li>
             <li class="ptext">You can reaach out to us!</li>
-                <li>Our e-mail: ishimweghilain5050@gmail.com</li>
-                <li>Our phone number: 0004453646</li>
-                <li>Our address: Streetname 22, 84503 city, country</li>
-            
+            <li>Our e-mail: ishimweghilain5050@gmail.com</li>
+            <li>Our phone number: 0004453646</li>
+            <li>Our address: Streetname 22, 84503 city, country</li>
         </ul>
     </section>
 
@@ -56,7 +63,7 @@
         CopyRigth 2022
     </footer>
 
-    <script src="index.js"></script>
+    <script type="module" src="index.js"></script>
     
 </body>
 </html>
