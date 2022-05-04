@@ -1,111 +1,79 @@
-/* eslint-disable  no-restricted-globals */
-/* eslint-disable  no-unused-vars */
-// Create Dom element
-import { DateTime } from './modules/luxon';
-import { switchMode } from './modules/localstorage';
+// Form local storage availability checker function
+import Bookshelf, { isStorageAvailable } from './modules/books.js';
+import { DateTime } from './modules/luxon.js';
 
-const AddBook = document.querySelector('#displaybook');
-const addBooks = localStorage.getItem('adbooks');
-let books = [];
-
-if (addBooks) {
-  books = JSON.parse(addBooks);
-}
-// Display book information
-
-books.forEach((book) => {
-  const newBook = `
-  <p>${book.name}</p>
-  <p>${book.author}</p>
-  <button onclick=deleteBook(${book.id}) class="removebtn"> Remove</button>
-  `;
-
-  const bookDiv = document.createElement('div');
-  bookDiv.classList.add('test');
-  bookDiv.innerHTML = newBook;
-  AddBook.appendChild(bookDiv);
-});
-// Remove button function
-function deleteBook(id) {
-  books = books.filter((book) => {
-    if (id === book.id) {
-      return false;
-    }
-    return true;
-  });
-  localStorage.setItem('adbooks', JSON.stringify(books));
-  window.location.reload();
-}
-// Add book information
-const addBtn = document.querySelector('#add');
-addBtn.addEventListener('click', () => {
-  const name = document.querySelector('#title').value;
-  const author = document.querySelector('#author').value;
-  let id = 0;
-  if (books.length > 0) {
-    id = books[books.length - 1].id + 1;
-  }
-  books.push({
-    id,
-    name,
-    author,
-  });
-  localStorage.setItem('adbooks', JSON.stringify(books));
-  window.location.reload();
-});
-
-// Display Sections Dynamically
-const awesomeBooksSection = document.getElementById('listbooksec');
-const inputFormSection = document.getElementById('newbooksec');
-const showListButton = document.getElementById('show-list-button');
-const addNewButton = document.getElementById('addnewlink');
-const contactInfoSection = document.getElementById('contact-info');
-const contactInfoButton = document.getElementById('contact-info-button');
-
-// const switchMode = (node) => {
-//     if (showListButton !== node && showListButton.classList.contains('active')) {
-//       showListButton.classList.remove('active');
-//     } else if (addNewButton !== node && addNewButton.classList.contains('active')) {
-//       addNewButton.classList.remove('active');
-//     } else if (contactInfoButton !== node && contactInfoButton.classList.contains('active')) {
-//       contactInfoButton.classList.remove('active');
-//     }
-//     node.classList.add('active');
-//   };
-  
-  const showBooksList = () => {
-    switchMode(showListButton);
-    awesomeBooksSection.style.display = 'block';
-  
-    contactInfoSection.style.display = 'none';
-    inputFormSection.style.display = 'none';
-  };
-  
-  showListButton.addEventListener('click', (event) => {
-    event.preventDefault();
-    showBooksList();
-  });
-  
-  addNewButton.addEventListener('click', (event) => {
-    event.preventDefault();
-    switchMode(addNewButton);
-    inputFormSection.style.display = 'flex';
-    awesomeBooksSection.style.display = 'none';
-    contactInfoSection.style.display = 'none';
-  });
-  
-  contactInfoButton.addEventListener('click', (event) => {
-    event.preventDefault();
-    switchMode(contactInfoButton);
-    contactInfoSection.style.display = 'block';
-    awesomeBooksSection.style.display = 'none';
-    inputFormSection.style.display = 'none';
-  });
-
-// Displaying current date and Time using Luxon
-const dateTime = document.querySelector('#current-date');
-const currentTime = () => {
-  const currentDateTime = DateTime.now().toLocaleString(DateTime.DATETIME_FULL_WITH_SECONDS);
-  dateTime.innerHTML = currentDateTime;
+const getTime = () => {
+  const dt = DateTime.now();
+  return dt.toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS);
 };
-setInterval(currentTime, 500);
+
+const time = document.getElementById('time');
+setInterval(() => {
+  time.innerHTML = getTime();
+}, 1000);
+
+const title = document.querySelector('#title');
+const author = document.querySelector('#author');
+const form = document.querySelector('#added-book');
+
+// Create a variable to contain local data
+let books = [];
+// If there's local data available,
+if (isStorageAvailable('localStorage')) {
+  const data = JSON.parse(localStorage.getItem('bookList'));
+  // and if it's not empty, update it
+  if (data) {
+    books = JSON.parse(localStorage.getItem('bookList'));
+  }
+}
+
+const newbook = new Bookshelf(books);
+
+form.onsubmit = () => {
+  newbook.addBook(title, author);
+
+  newbook.updateBookList();
+
+  form.reset();
+};
+
+newbook.updateBookList();
+
+const remove = (id) => {
+  newbook.remove(id);
+};
+window.remove = remove;
+
+const allBooks = document.querySelector('.all-books');
+const addBook = document.querySelector('.add-book');
+const contact = document.querySelector('.contact');
+const navList = document.querySelector('#list');
+const navAdd = document.querySelector('#add');
+const navContact = document.querySelector('#contact');
+
+navList.onclick = () => {
+  navList.style.color = 'darkblue';
+  navAdd.style.removeProperty('color');
+  navContact.style.removeProperty('color');
+  allBooks.classList.remove('hide');
+  addBook.classList.add('hide');
+  contact.classList.add('hide');
+};
+
+navAdd.onclick = () => {
+  navAdd.style.color = 'darkblue';
+  navList.style.removeProperty('color');
+  navContact.style.removeProperty('color');
+  addBook.classList.remove('hide');
+  allBooks.classList.add('hide');
+  contact.classList.add('hide');
+};
+
+navContact.onclick = () => {
+  navContact.style.color = 'darkblue';
+  navList.style.removeProperty('color');
+  navAdd.style.removeProperty('color');
+  contact.classList.remove('hide');
+  addBook.classList.add('hide');
+  allBooks.classList.add('hide');
+};

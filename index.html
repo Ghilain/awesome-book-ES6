@@ -1,69 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <link rel="stylesheet" href="index.css">
-    <title>Awesome Books with ES6</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Awesome Books With ES6</title>
+	<link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <header class="header1">
-        <h1 class="titlebook">Awesome books</h1>
-        <nav class="links">
-            <a href="#" id="show-list-button" class="listbook">List</a>
-            <a href="#" id="addnewlink" class="addbook">Add Book</a>
-            <a href="#" id="contact-info-button" class="contactbook">Contact</a>
-        </nav>
-    </header>
-    <div class="current-date">
-        <P id="current-date"></P>
-    </div>
+	<header class="header">
+		<nav class="nav">
+			<div class="logo"><a href="#">Awesome Books</a></div>
+			<ul class="nav-list">
+				<li class="nav-item"><a id="list" class="nav-link">List</a></li>
+				<li class="nav-item"><a id="add" class="nav-link">Add new</a></li>
+				<li class="nav-item"><a id="contact" class="nav-link">Contact</a></li>
+			</ul>
+		</nav>
+		<div class="date">
+			<p id="time"></p>
+		</div>
+	</header>
+	<main class="main">
+		<section class="all-books">
+			<h2>All Awesome Books</h2>
+			<div class="added-bklist">
+				<!-- Add the items from in js -->
+			</div>
+		</section>
 
-       <!-- Book List -->
+        <!-- Add book section -->
+		<section class="add-book hide">
+			<h2>Add a new book</h2>
+			<form action="#" id="added-book" class="form">
+				<div class="input-container">
+					<input id="title" type="text" placeholder="Title" required>
+				</div>
+				<br>
+				<div class="input-container">
+					<input id="author" type="text" placeholder="Author" required>
+				</div>
+				<br>
+				<button type="submit">Add</button>
+			</form>
+		</section>
 
-    <div id="listbooksec" class="booklist">
-        <div class="listtitle">
-            <h4>Title</h4>
-            <h4>Author</h4>
-            <h4>Action</h4>
-        </div>
-        <div id="displaybook" class="displaybook1">
-        </div>
-    </div>
+        <!-- Contact section -->
+		<section class="contact hide">
+			<div class="contact-header">
+				<h2>Contact Information</h2>
+			</div>
+			<div class="contact-body">
+				<p>Do you have any questions or you just want to say "Hello"?</p>
+				<p>You can reach out to us!</p>
+			</div>
+			<div class="contact-list">
+				<ul>
+					<li>Our email:ishimweghilain5050@gmmail.com</li>
+					<li>Our phone number: +250 787199763</li>
+					<li>Our address: Kigali City, Rwanda</li>
+				</ul>
+			</div>
+		</section>
+	</main>
+	<footer class="footer">
+		<p class="copy">Copyright 2022</p>
+	</footer>
 
-    <!-- Add book section -->
-
-    <div id="newbooksec" class="addnewbook">
-        <h1 class="addtitle">Add Book</h1>
-        <h3>Title</h3>
-        <input type="text" name="title1" id="title" placeholder="Title"/>
-        <h3>Author</h3>
-        <input type="text" name="author1" id="author" placeholder="Author"/>
-        <button type="button" id="add">Add</button>
-    </div>
-
-            <!-- Contact info section -->
-
-    <section id="contact-info" class="contactinfo">
-        <h2>Contact Information</h2>
-        <ul>
-            <li class="ptext">Do have any questions or you just want to say "Hello"?</li>
-            <li class="ptext">You can reaach out to us!</li>
-            <li>Our e-mail: ishimweghilain5050@gmail.com</li>
-            <li>Our phone number: 0004453646</li>
-            <li>Our address: Streetname 22, 84503 city, country</li>
-        </ul>
-    </section>
-
-    <!-- Contact info section -->
-
-    <footer class="footerbook">
-        CopyRigth 2022
-    </footer>
-
-    <script type="module" src="index.js"></script>
-    
+	<script type="module" src="index.js"></script>
 </body>
 </html>

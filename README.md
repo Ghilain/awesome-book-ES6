@@ -9,7 +9,7 @@ The Awesome Book project allows users to add or remove their favorite books.
 
 ## Live Demo
 
-[Live](https://ghilain.github.io/awesome-book-ES6/index.html)
+[Live]( https://ghilain.github.io/awesome-book-ES6/index.html)
 
 
 ## Getting Started
